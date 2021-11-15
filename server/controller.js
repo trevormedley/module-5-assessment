@@ -273,11 +273,12 @@ module.exports = {
         .catch(err => console.log(err));
     },
     deleteCity: (req, res) => {
+        let {id} = req.params
         console.log(req);
         sequelize.query(`
         DELETE
         FROM cities
-        WHERE city_id = ${req.body.city_id};
+        WHERE city_id = ${id};
         `)
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log(err));
